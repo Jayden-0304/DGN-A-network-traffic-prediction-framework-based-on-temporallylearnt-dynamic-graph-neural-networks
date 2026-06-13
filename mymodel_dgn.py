@@ -14,7 +14,6 @@ class myModel(tf.keras.Model):
         for i in range(1*2):
             self.GCN.append(GCNConv(self.hparams['GCNConv_dim'],
                                     activation=tf.nn.selu))
-        # A1表示学习邻接矩阵
         self.A1 = nttg.nttg(self.hparams['input_dim'],activation=tf.nn.relu6, name="FirstLayer")
         self.RNN1 = tf.keras.layers.GRUCell(self.hparams['GRU_dim'], dtype=tf.float32)
         self.RNN2 = tf.keras.layers.GRUCell(self.hparams['GRU_dim'], dtype=tf.float32)
